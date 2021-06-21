@@ -1,0 +1,15 @@
+<mat-card class="recipe m-4" *ngIf="recipe">
+  <mat-card-title>{{ recipe.name }}</mat-card-title>
+
+  <mat-card-content>
+    <div class="description">
+      {{ recipe.description }}
+    </div>
+
+    <mat-list>
+      <mat-list-item *ngFor="let ingredient of recipe.ingredients">
+        {{ ingredient.name }}
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

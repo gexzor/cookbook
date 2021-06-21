@@ -1,0 +1,20 @@
+<div class="recipes" *ngFor="let recipe of recipes$ | async">
+  <mat-card class="recipe m-4" (click)="openDialog(recipe)">
+    <mat-card-title>{{ recipe.name }}</mat-card-title>
+
+    <mat-card-content>
+      <div class="description">
+        {{ recipe.description }}
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        color="warn"
+        mat-raised-button
+        (click)="deleteRecipe(recipe, $event)"
+      >
+        Delete
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

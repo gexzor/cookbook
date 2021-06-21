@@ -1,0 +1,13 @@
+@import "~@angular/material/theming";
+
+$theme-primary: mat-palette($mat-indigo);
+$theme-accent: mat-palette($mat-indigo);
+$theme-warn: mat-palette($mat-red);
+$theme-success: mat-palette($mat-green);
+
+$primary: mat-color($theme-primary);
+$accent: mat-color($theme-accent);
+$warn: mat-color($theme-warn);
+$success: mat-color($theme-success);
+
+$text: white;

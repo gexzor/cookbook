@@ -1,0 +1,18 @@
+.nav-spacer {
+  margin: 0 8px;
+}
+
+.nav-links {
+  a {
+    color: white;
+    text-decoration-line: none;
+
+    &:hover {
+      color: deeppink;
+    }
+
+    &.active {
+      text-decoration-line: underline;
+    }
+  }
+}

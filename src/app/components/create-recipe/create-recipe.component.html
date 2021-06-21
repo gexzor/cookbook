@@ -1,0 +1,84 @@
+<mat-card>
+  <mat-card-header> Create a new recipe </mat-card-header>
+  <mat-card-content>
+    <form
+      class="ingredient-form"
+      [formGroup]="recipeForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <mat-form-field>
+        <mat-label>Recipe name</mat-label>
+        <input
+          id="name"
+          matInput
+          formControlName="name"
+          placeholder="Recipe name"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea
+          id="description"
+          matInput
+          formControlName="description"
+          placeholder="Enter a description of your recipe"
+          required
+        ></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ingredients:</mat-label>
+        <input
+          id="ingredients"
+          formControlName="ingredients"
+          placeholder="Add ingredient"
+          [matChipInputFor]="chipList"
+          [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="addIngredient($event)"
+          required
+        />
+        <mat-chip-list #chipList>
+          <mat-chip
+            *ngFor="let ingredient of ingredientList"
+            (removed)="removeIngredient(ingredient)"
+          >
+            {{ ingredient.name }}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+      </mat-form-field>
+
+      <div class="form-actions d-flex justify-content-end">
+        <button
+          mat-raised-button
+          color="warn"
+          type="button"
+          [disabled]="!recipeForm.dirty"
+          (click)="resetForm()"
+        >
+          Reset
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!recipeForm.valid"
+        >
+          Create recipe
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<pre>
+Form values:
+    {{ recipeForm.value | json }}
+</pre>
+
+<pre>
+Ingredients:
+{{ ingredientList | json }}
+</pre>
